@@ -1,0 +1,297 @@
+<!-- <link rel="stylesheet" href="AgriApp\src\assets\CSS\fontawesome.min.css" type="text/css"> -->
+
+<!-- Add User Modal -->
+<div class="modal fade" id="adduserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Admin Operation Form</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="form-group">
+            <div class="form-group">
+              <label for="exampleInputEmail1">UserType</label>
+              <input type="email" formControlName="userType" class="form-control" id="exampleInputEmail1" value="Farmer"
+                aria-describedby="emailHelp" placeholder="Enter UserType">
+            </div>
+            <label for="exampleInputEmail1">Name</label>
+            <input type="email" formControlName="userName" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter userName">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" formControlName="userEmail" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter Email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Mobile no</label>
+            <input type="email" formControlName="mobileNo" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter MobileNo">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Location</label>
+            <input type="email" formControlName="location" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter Location">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Password</label>
+            <input type="email" formControlName="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password" type="password">
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="addUser()">Add</button>
+
+          <button type="submit" class="btn btn-primary" (click)="updateUser()" data-dismiss="modal">Update</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- form for editing crop -->
+ <div class="modal fade" id="addCropModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Admin Operation Form</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="formValueCrop">
+              <div class="form-group">
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">FarmerID</label>
+                      <input type="email" formControlName="farmerId" value="Farmer" class="form-control" id="exampleInputEmail1" value="Farmer" aria-describedby="emailHelp" placeholder="Enter farmerId" >
+                    </div>
+                  <label for="exampleInputEmail1">CropId</label>
+                  <input type="email" formControlName="cropId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropId">
+                </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">cropName</label>
+                <input type="email" formControlName="cropName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropName">
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">cropQty</label>
+                  <input type="email" formControlName="cropQty" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropQty">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">cropType</label>
+                  <input type="email" formControlName="cropType" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropType">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">cropPrice</label>
+                  <input type="email" formControlName="cropPrice" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropPrice">
+                </div>
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">cropDesc</label>
+                  <input type="email" formControlName="cropDesc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropPrice">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">cropImgUrl</label>
+                  <input type="email" formControlName="cropImgUrl" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropPrice">
+                </div>
+              <button type="submit" class="btn btn-primary" (click)="addCrop()">Add</button>
+              <button type="submit" class="btn btn-primary" (click)="updateCrop()" data-dismiss="modal">Update</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- -------------------------------------------------------- -->
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard
+    <button mat-raised-button   type="button"><a href="">Signout</a></button>
+    <div class="cButtons"> 
+    <button mat-raised-button   type="button" data-toggle="modal" data-target="#adduserModal"> Add User</button> &nbsp;
+    <button  mat-raised-button  type="button" data-toggle="modal" data-target="#addCropModal"> Add Crop</button> &nbsp;
+     
+  </div>
+
+  </h1>
+  <mat-tab-group>
+
+    <mat-tab label="FARMER">
+
+
+
+
+      <div class="container" *ngIf="FarmerList!=null">
+
+
+        <table datatable class="table">
+          <thead>
+            <tr>
+              <th scope="col">#id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Location</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Account No</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let farmer of FarmerList">
+              <td>{{farmer.userId}}</td>
+              <td>{{farmer.userName}}</td>
+              <td>{{farmer.userEmail}}</td>
+              <td>{{farmer.location}}</td>
+              <td>{{farmer.mobileNo}}</td>
+              <td>{{farmer.accountNo}}</td>
+              <td>
+
+                <button mat-button (click)="editUser(farmer)" data-toggle="modal" data-target="#adduserModal">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button color="warn" (click)=deleteFarmer(farmer.userId)>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+      </div>
+
+
+
+    </mat-tab>
+
+
+
+
+
+
+
+
+    <mat-tab label="DEALER">
+      <div class="container " *ngIf="DealerList!=null">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Location</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Account No</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dealer of DealerList">
+              <td>{{dealer.userId}}</td>
+              <td>{{dealer.userName}}</td>
+              <td>{{dealer.userEmail}}</td>
+              <td>{{dealer.location}}</td>
+              <td>{{dealer.mobileNo}}</td>
+              <td>{{dealer.accountNo}}</td>
+              <td>
+                <button mat-button (click)="editUser(dealer)" data-toggle="modal" data-target="#adduserModal">
+                  <mat-icon>edit</mat-icon>
+                </button> &nbsp; &nbsp;
+                <button mat-button color="warn" (click)="deleteFarmer(dealer.userId)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+
+
+
+
+
+    </mat-tab>
+    <mat-tab label="CROP">
+        <div class="container">
+          
+          <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="CropList">
+          
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- farmerId Column -->
+            <ng-container matColumnDef="farmerId">
+              <th mat-header-cell *matHeaderCellDef> farmerId. </th>
+              <td mat-cell *matCellDef="let element"> {{element.farmerId}} </td>
+            </ng-container>
+          
+            <!-- cropId Column -->
+            <ng-container matColumnDef="cropId">
+              <th mat-header-cell *matHeaderCellDef> cropId </th>
+              <td mat-cell *matCellDef="let element"> {{element.cropId}} </td>
+            </ng-container>
+          
+            <!-- cropName Column -->
+            <ng-container matColumnDef="cropName">
+              <th mat-header-cell *matHeaderCellDef> cropName </th>
+              <td mat-cell *matCellDef="let element"> {{element.cropName}} </td>
+            </ng-container>
+          
+            <!-- cropQty Column -->
+            <ng-container matColumnDef="cropQty">
+              <th mat-header-cell *matHeaderCellDef> cropQty </th>
+              <td mat-cell *matCellDef="let element"> {{element.cropQty}} </td>
+            </ng-container>
+
+            <!-- cropType Column -->
+            <ng-container matColumnDef="cropType">
+                <th mat-header-cell *matHeaderCellDef> cropType </th>
+                <td mat-cell *matCellDef="let element"> {{element.cropType}} </td>
+              </ng-container>
+
+              <!-- cropPrice Column -->
+              <ng-container matColumnDef="cropPrice">
+                <th mat-header-cell *matHeaderCellDef> cropPrice </th>
+                <td mat-cell *matCellDef="let element"> {{element.cropPrice}} </td>
+              </ng-container>
+
+              <!-- cropDesc Column -->
+              <ng-container matColumnDef="cropDesc">
+                <th mat-header-cell *matHeaderCellDef [hidden]=true> cropDesc </th>
+                <td mat-cell *matCellDef="let element" [hidden]=true> {{element.cropDesc}} </td>
+              </ng-container>
+
+              <!-- cropImgUrl Column -->
+              <ng-container matColumnDef="cropImgUrl">
+                <th mat-header-cell *matHeaderCellDef [hidden]=true> cropImgUrl </th>
+                <td mat-cell *matCellDef="let element" [hidden]=true> {{element.cropImgUrl}} </td>
+              </ng-container>
+
+              <!-- Actions Column -->
+            <ng-container matColumnDef="Actions">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let row"> 
+                    <button mat-icon-button color="primary" (click)="editCrop(row)" data-toggle="modal" data-target="#addCropModal"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button color="warn" (click)="deleteCrop(row.cropId)"><mat-icon>delete</mat-icon></button> </td>
+              </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <br>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons 
+          aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+
+      </div>
+          
+
+    </mat-tab>
+  </mat-tab-group>
+</div>

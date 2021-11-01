@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+    <title>AgriApp</title>
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+</head>
+
+<body>
+    <!-- Header -->
+
+
+    <div class="hero_area ">
+        
+
+       
+              <nav class="navbar navbar-expand-sm">
+                <!-- <a class="navbar-brand" href="#">My Brand</a> -->
+                <div class="logo">
+                    <img src="..\assets\logo1.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                    Crop-Deal</div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" style="color: black;">
+                    <i class="fas fa-bars"></i>
+                  </button>
+         
+                  <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="color: black;">SERVICES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="color: black;">CONTACT</a>
+                        </li>
+    
+    
+                    </ul>
+                    </div>
+              </nav>
+            
+
+  
+              
+    <!-- </mat-toolbar> -->
+
+        <!-- slider section -->
+        <section class="slider_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="detail-box">
+                            <h1>
+                                Welcome to <br> <br> Crop-Deal
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Sign In</h3>
+                        </div>
+                        <div class="card-body">
+                            <form [formGroup]="loginForm" (ngSubmit)="Authenticate()">
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="username" formControlName="userName">
+                                    
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="password" formControlName="password">
+                                </div>
+                                <div class="row align-items-center remember">
+                                    <input type="checkbox">Remember Me
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Login" class="btn float-right login_btn">
+                                </div>
+                                <h4 style="color: red;">{{message}}</h4>
+                            </form>
+                            <p>{{message}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-center links">
+                                Don't have an account?&nbsp;&nbsp;&nbsp;<button class="btn float-right login_btn"  type="button" data-toggle="modal" data-target="#adduserModal">Sign-Up</button>
+                            </div>
+                            <br>
+                            <div class="d-flex justify-content-center">
+                                <a href="#">Forgot your password?</a>
+                            </div>
+                        </div>
+                    </div>
+ 
+                </div>
+            </div>
+        </section>
+        <!-- end slider section -->
+
+
+
+        
+
+
+<!-- Footer -->
+<!-- <a class="myform-btn" (click)=changeParentUser() routerLink="../admin">Im Not An Admin</a> -->
+
+
+
+<!-- Footer ends -->
+
+<!-- forms -->
+<div class="modal fade" id="adduserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">SignUp Form</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="signUpForm">
+            <div class="form-group">
+              <div class="form-group">
+                <label for="user" class="label">Who are you:</label>&nbsp;&nbsp;
+                <select name="userType" class="input" id="userType" formControlName="userType">
+                  <option value="Farmer" selected style="color: black;">Farmer</option>
+                  <option value="Dealer" style="color: black;">Dealer</option>
+                </select>
+              </div>
+              <label for="exampleInputEmail1">Name</label>
+              <input type="email" formControlName="userName" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter userName">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" formControlName="userEmail" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter Email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Mobile no</label>
+              <input type="email" formControlName="mobileNo" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter MobileNo">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Account no</label>
+                <input type="email" formControlName="accountNo" class="form-control" id="exampleInputEmail1"
+                  aria-describedby="emailHelp" placeholder="Enter MobileNo">
+              </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Location</label>
+              <input type="email" formControlName="location" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter Location">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Password</label>
+              <input type="email" formControlName="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password" type="password">
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="addUser()">SignUp</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- <router-outlet></router-outlet> -->
+
+<!-- <app-admin></app-admin> -->

@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+html {
+    scroll-behavior: smooth;
+}
+
+.body{
+    overflow: overlay;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+.hero_area {
+    min-height: 100vh;
+    background-color: #4c816f;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+}
+
+.layout_padding {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+
+/* .navbar {
+    position: fixed !important;
+} */
+
+.navbar-brand span {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.navbar{
+    background-color: #B1E693;
+    /* background-color: #f1f2f3; */
+  }
+  /* .tab{
+    background-color: #B1E693;
+  } */
+
+  .card{
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5) !important;
+    }
+
+    .social_icon span{
+        font-size: 60px;
+        margin-left: 10px;
+        color: #FFC312;
+        }
+        
+        .social_icon span:hover{
+        color: white;
+        cursor: pointer;
+        }
+        
+        .card-header h3{
+        color: white;
+        }
+        
+        .social_icon{
+        position: absolute;
+        right: 20px;
+        top: -45px;
+        }
+        
+        .input-group-prepend span{
+        width: 50px;
+        background-color: #FFC312;
+        color: black;
+        border:0 !important;
+        }
+        
+        input:focus{
+        outline: 0 0 0 0  !important;
+        box-shadow: 0 0 0 0 !important;
+        
+        }
+        
+        .remember{
+        color: white;
+        }
+        
+        .remember input
+        {
+        width: 20px;
+        height: 20px;
+        margin-left: 15px;
+        margin-right: 5px;
+        }
+        
+        .login_btn{
+        color: black;
+        background-color: #FFC312;
+        width: 100px;
+        }
+        
+        .login_btn:hover{
+        color: black;
+        background-color: white;
+        }
+        
+        .links{
+        color: white;
+        }
+        
+        .links a{
+        margin-left: 4px;
+        }
+
+.col-md-2 text-end {
+    justify-content: space-between;
+}
+
+
+.nav-extra {
+    margin: 5px;
+    font-family: "Open Sans", sans-serif;
+    padding: 0px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff !important;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-weight: bold;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+
+.nav-extra:hover {
+    background-color: #3b7c67;
+}
+.nav-item{
+    justify-content: right;
+}
+
+/* .nav-item a:hover {
+    background-color: #3E7C17;
+} */
+
+
+/* SLider Section */
+
+.slider_section {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+}
+
+.slider_section .row {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.slider_section .detail-box {
+    color: #ffffff;
+}
+
+.slider_section .detail-box h1 {
+    font-size: 3rem;
+    padding-bottom: 15px;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.slider_section .detail-box h1 span {
+    font-size: 5rem;
+}
+
+.slider_section .detail-box .btn-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+/* * {
+    margin: 0;
+    padding: 0
+} */
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+
+
+
+/* About Section */
+
+.about_section {
+    background: #f1f2f3;
+}
+
+.about_section .row {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.about_section .detail-box .heading_container {
+    margin-bottom: 10px;
+}
+
+.about_section .detail-box p {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.about_section .img-box img {
+    width: 100%;
+}
+
+
+/* About Section ends */
+
+
+
+/* form stylings */
+/* for login */

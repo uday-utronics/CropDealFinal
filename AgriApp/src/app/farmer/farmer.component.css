@@ -1,0 +1,34 @@
+#ads .card-detail-badge {      
+    background: #f2d900;
+    text-align: center;
+    border-radius: 30px 30px 30px 30px;
+    color: #000;
+    padding: 5px 10px;
+    font-size: 14px;        
+}
+#ads .ad-btn {
+    text-transform: uppercase;
+    width: 150px;
+    height: 40px;
+    border-radius: 80px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    border: 3px solid #e6de08;
+    display: block;
+    text-decoration: none;
+    margin: 20px auto 1px auto;
+    color: #000;
+    overflow: hidden;        
+    position: relative;
+    background-color: #e6de08;
+}
+
+#ads .ad-btn:hover {
+        background-color: #e6de08;
+        color: #1e1717;
+        border: 2px solid #e6de08;
+        background: transparent;
+        transition: all 0.3s ease;
+        box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+    }

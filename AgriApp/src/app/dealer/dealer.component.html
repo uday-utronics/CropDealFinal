@@ -1,0 +1,325 @@
+<head>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+<!-- navbar -->
+<!-- <nav class="navbar navbar-expand-lg  navbar-light " style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="#">
+      <img src="..\assets\logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <span>Agro-App : {{loggeduser.userName}}</span>
+     
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav> -->
+<nav class="navbar navbar-expand-sm ml-auto">
+  <!-- <a class="navbar-brand" href="#">My Brand</a> -->
+  <div class="logo">
+      <img src="..\assets\logo1.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Crop-Deal</div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+      
+              Welcome:{{loggeduser.userName}}&nbsp;&nbsp;
+      
+            </li>
+      
+            <li class="nav-item active">
+      
+              <button data-toggle="modal" data-target="#profile"><i class="fas fa-user-circle"></i></button> &nbsp;
+      
+            </li>
+      
+            <li class="nav-item active">
+      
+              <a class="nav-link btn btn-outline-danger" href="">Signout <span class="sr-only">(current)</span></a>
+      
+            </li>
+      
+            </ul>
+      
+         
+      
+        </div>
+      </nav>
+
+
+
+  
+  
+
+
+      <!-- modelss -->
+      <!-- Modal -->
+<div class="modal fade" id="fdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card p-3 bg-white"><i class="fa fa-apple"></i>
+          <div class="about-product text-center mt-2"><img src="{{currentCrop.cropImgUrl}}" width="220" height="200">
+              <div>
+                  <h4>{{currentCrop.cropName}}</h4>
+                  <!-- <h6 class="mt-0 text-black-50">Apple pro display XDR</h6> -->
+                  <p>{{currentCrop.cropDesc}}</p>
+              </div>
+          </div>
+          <div class="stats mt-2">
+            <div class="d-flex justify-content-between p-price"><span>Farmer Name:</span><span>{{currentFarmer.userName}}</span></div>
+              <div class="d-flex justify-content-between p-price"><span>location</span><span>{{currentFarmer.location}}</span></div>
+              <div class="d-flex justify-content-between p-price"><span>CONTACT</span><span>{{currentFarmer.mobileNo}}</span></div>
+              <div class="d-flex justify-content-between p-price"><span>Crop quantity:</span><span>{{currentCrop.cropQty}}</span></div>
+              <div class="d-flex justify-content-between p-price"><span>Crop Type:</span><span>{{currentCrop.cropType}}</span></div>
+          </div>
+          <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Negotiable price:</span><span>₹ {{currentCrop.cropPrice}}</span></div>
+          <button mat-raised-button (click)="placeOrder(currentFarmer.userId,currentCrop.cropId,currentFarmer.userName,currentFarmer.mobileNo,currentCrop.cropName)" data-toggle="modal" data-target="#cropDetailModal">Initiate-Deal &raquo;</button>
+        </div>
+      <p ></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- cards  -->
+<div class="container marketing" #Cards>
+  
+  <mat-tab-group class="scroll">
+    <mat-tab label="All Crops">
+      <input type="text" class="form-control"  placeholder="Enter Keyword for filter result" [(ngModel)]="searchedKeyword" style="width: 23rem;">
+      <div style="align-content: center;">
+  <div class="row" >
+  <div *ngFor="let crop of CropList | filter:searchedKeyword" class="col-lg-auto">
+    <div class="card p-3 bg-white" style="width: 20rem;"><i class="fa fa-apple"></i>
+        <div class="about-product text-center mt-2"><img src="{{crop.cropImgUrl}}" width="220" height="200">
+            <div>
+                <h4>{{crop.cropName}}</h4>
+                <p>{{crop.cropDesc}}</p>
+            </div>
+        </div>
+        <div class="stats mt-2">
+            <!-- <div class="d-flex justify-content-between p-price"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div> -->
+            <div class="d-flex justify-content-between p-price"><span>Crop quantity:</span><span>{{crop.cropQty}}</span></div>
+            <div class="d-flex justify-content-between p-price"><span>Crop Type:</span><span>{{crop.cropType}}</span></div>
+            <!-- {{getFarmer(crop.farmerId)}} -->
+    
+            <!-- <div id="fdetails"> {{currentFarmer.location}}</div> -->
+        </div>
+        <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div>
+        <button mat-raised-button (click)="getFarmer(crop)" data-toggle="modal" data-target="#fdetails" >More-details</button>
+    </div>
+   <br>
+    <!-- <div id="fdetails"> {{currentFarmer.location}}</div> -->
+</div>
+
+</div>
+
+</div>
+</mat-tab>
+
+<mat-tab label="Interested Deals">
+  <div class="subscribedCrops">
+    
+    <div class="row" id="ads">
+      <!-- Category Card -->
+      <div *ngFor="let order of MyOrders" style="padding: 1.2rem;">
+        <div *ngIf="order.orderStatus!='Completed'">
+          <div class="card p-3 bg-white shadow mb-5 rounded" style="width: 20rem;"><i class="fa fa-apple"></i>
+              <div class="text-center mt-2">
+                  <div>
+                      <div class="font-weight-bold mt-4"><span>Order details</span></div>
+                      <h4>crop : {{order.cropName}}</h4>
+                      <p>cropId: {{order.cropID}}</p>
+                  </div>
+              </div>
+              <div class="stats mt-2">
+                  <!-- <div class="d-flex justify-content-between p-price"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div> -->
+                  <div class="d-flex justify-content-between p-price"><span>Dealer Name:</span><span>{{order.dealerName}}</span></div>
+                  <div class="d-flex justify-content-between p-price"><span>Dealer contact</span><span>{{order.dealerMobile}}</span></div>
+                  <div class="d-flex justify-content-between p-price"><span>Deal Status</span><span>{{order.orderStatus}}</span></div>
+                  <!-- {{getFarmer(crop.farmerId)}} -->
+          
+                  <!-- <div id="fdetails"> {{currentFarmer.location}}</div> -->
+              </div>
+              <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>OrderID: </span><span>{{order.orderID}}</span></div>
+              <!-- <div class="btn btn-success btn-lg btn-block">Proceed to payment</div> -->
+              <button class="btn btn-success btn-lg btn-block" *ngIf="order.orderStatus=='Accepted'" data-toggle="modal" data-target="#payment" (click)="payNow(order)">Make Payment</button>
+          </div>
+  </div>
+
+  </div>
+
+  </div>
+</div>
+</mat-tab>
+
+<mat-tab label="Paid Orders">
+  <div class="payment">
+    
+    <div class="row" id="ads">
+      <!-- Category Card -->
+      <div *ngFor="let order of MyOrders" style="padding: 1.2rem;">
+        <div *ngIf="order.orderStatus=='Completed'">
+
+            <!-- {{getPrice(order.orderID)}} -->
+            <!-- {{getPrice(order.orderID)}} {{payObj.paymentAmount}} -->
+
+          <div class="card p-3 bg-white shadow mb-5 rounded" style="width: 20rem;"><i class="fa fa-apple"></i>
+              <div class="text-center mt-2">
+                  <div>
+                      <div class="font-weight-bold mt-4"><span>Order details</span></div>
+                      <h4>crop : {{order.cropName}}</h4>
+                      <p>cropId: {{order.cropID}}</p>
+                  </div>
+              </div>
+              <div class="stats mt-2">
+                  <!-- <div class="d-flex justify-content-between p-price"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div> -->
+                  <div class="d-flex justify-content-between p-price"><span>Dealer Name:</span><span>{{order.dealerName}}</span></div>
+                  <div class="d-flex justify-content-between p-price"><span>Dealer contact</span><span>{{order.dealerMobile}}</span></div>
+                  <div class="d-flex justify-content-between p-price"><span>Deal Status</span><span>{{order.orderStatus}}</span></div>
+                  <!-- {{getFarmer(crop.farmerId)}} -->
+                  <div class="d-flex justify-content-between p-price"><span>Amount paid:</span><span></span></div>
+                  <!-- <div id="fdetails"> {{currentFarmer.location}}</div> -->
+              </div>
+              <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>OrderID: </span><span>{{order.orderID}}</span></div>
+              <!-- <div class="btn btn-success btn-lg btn-block">Proceed to payment</div> -->
+              <button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#print" (click)="getPrice(order.orderID)">View Payment Details</button>
+          </div>
+  </div>
+
+  </div>
+</div>
+
+  </div>
+</mat-tab>
+
+
+
+
+</mat-tab-group>
+  
+
+
+
+
+
+</div>
+<!-- cards ends here -->
+<div class="modal fade" id="payment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size: xx-large;">PAYMENT GATEWAY</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <!-- <div class="row gx-3"> -->
+            <form [formGroup]="payForm">
+            <h4 style="color: black; font-style: italic; font-weight: bold;">OrderID:{{order.orderID}}</h4>
+              <div class="col-12">
+                  <div class="d-flex flex-column">
+                      <p class="text mb-1">Paying to:</p> <input class="form-control mb-3" type="text" placeholder="Name" value="{{order.farmerName}}" style="font-weight: bold;">
+                  </div>
+              </div>
+              <div class="col-12">
+                <div class="d-flex flex-column">
+                    <p class="text mb-1">Amount</p>
+                    <input class="form-control mb-3" type="text" formControlName="paymentAmount" placeholder="Name" value="Enter Amount">
+                </div>
+            </div>
+
+              <div class="col-12">
+                  <div class="d-flex flex-column">
+                      <p class="text mb-1">Card Number</p> <input class="form-control mb-3" type="text" placeholder="1234 5678 435678">
+                  </div>
+              </div>
+              <div class="col-6">
+                  <div class="d-flex flex-column">
+                      <p class="text mb-1">Expiry</p> <input class="form-control mb-3" type="text" placeholder="MM/YYYY">
+                  </div>
+              </div>
+              <div class="col-6">
+                  <div class="d-flex flex-column">
+                      <p class="text mb-1">CVV/CVC</p> <input class="form-control mb-3 pt-2 " type="password" placeholder="***">
+                  </div>
+              </div>
+              <div class="col-12">
+                  <!-- <div class="btn btn-primary mb-3"> <span class="ps-3" (click)="addPayment(order.orderID,order.cropName,order.farmerName,order.dealerName)">Pay</span> <span class="fas fa-arrow-right"></span> </div> -->
+                  <button class="btn btn-primary mb-3 ps-3" (click)="addPayment(order.orderID,order.cropName,order.farmerName,order.dealerName)">
+                    Pay
+                  </button>
+              </div>
+            </form>
+          </div>
+        
+      </div>
+      </div>
+    </div>
+  <!-- </div> -->
+  <div class="modal fade" id="print" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Payment Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3>Payment ID: {{payObj.paymentID}}</h3>
+          <h3>Paid By: {{payObj.paymentFrom}} to {{payObj.paymentTo}} </h3>
+          <h3>CropName: {{payObj.orderName}}</h3>
+          <h3>AmountPaid: {{payObj.paymentAmount}}</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- profile -->
+  <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">My Profile</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card p-4">
+            <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button> <span class="name mt-3">{{loggeduser.userName}}</span>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">Mobile No: {{loggeduser.mobileNo}}</span></div>
+                <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">EmailId: {{loggeduser.userEmail}}</span> </div>
+                <div><a href="" class="nav-link btn btn-outline-danger">Signout</a></div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>

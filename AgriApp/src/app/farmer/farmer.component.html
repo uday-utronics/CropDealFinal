@@ -1,0 +1,174 @@
+<mat-toolbar class="navbar">
+    <div class="logo">
+      <img src="..\assets\logo1.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Crop-Deal</div>
+ <div>
+    <span>
+      
+      <span style="color:#191A19;">{{loggeduser.userName}} </span>
+      <button data-toggle="modal" data-target="#profile"><i class="fas fa-user-circle"></i></button>
+        <!-- <a class="nav-link btn btn-outline-danger" href="">Signout <span class="sr-only">(current)</span></a> -->
+        <!-- <a href="" class="nav-link btn btn-outline-danger">Signout</a> -->
+
+      </span>
+      
+    <!-- <span class="admin" style="color:#191A19;">{{loggeduser.userName}} </span>
+    <button data-toggle="modal" data-target="#profile"><i class="fas fa-user-circle"></i></button>
+      <a class="nav-link btn btn-outline-danger" href="">Signout <span class="sr-only">(current)</span></a> -->
+    </div>
+   </mat-toolbar>
+
+
+   <div class="container marketing" #Cards>
+  
+    <mat-tab-group class="scroll">
+      <mat-tab label="My Crops">
+        <br>
+        <div class="heading d-flex justify-content-between">
+        <input type="text" class="searchBar"  placeholder="Enter Keyword for filter result" [(ngModel)]="searchedKeyword" style="width: 23rem;">
+        <button  mat-raised-button  type="button" data-toggle="modal" data-target="#addCropModal" (click)="fillFarmerId()"> Add Crop</button>
+    </div>
+    <br>
+        <div style="align-content: center;">
+    <div class="row" >
+    <div *ngFor="let crop of myCropList | filter:searchedKeyword" class="col-lg-auto">
+      <div class="card p-3 bg-white" style="width: 20rem;"><i class="fa fa-apple"></i>
+          <div class="about-product text-center mt-2"><img src="{{crop.cropImgUrl}}" width="220" height="200">
+              <div>
+                  <h4>{{crop.cropName}}</h4>
+                  <p>{{crop.cropDesc}}</p>
+              </div>
+          </div>
+          <div class="stats mt-2">
+              <!-- <div class="d-flex justify-content-between p-price"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div> -->
+              <div class="d-flex justify-content-between p-price"><span>Crop quantity:</span><span>{{crop.cropQty}}</span></div>
+              <div class="d-flex justify-content-between p-price"><span>Crop Type:</span><span>{{crop.cropType}}</span></div>
+              <!-- {{getFarmer(crop.farmerId)}} -->
+      
+              <!-- <div id="fdetails"> {{currentFarmer.location}}</div> -->
+          </div>
+          <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div>
+          <div style="justify-content: right;">
+          <button mat-icon-button color="primary" (click)="editCrop(crop)" data-toggle="modal" data-target="#addCropModal"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="deleteCrop(crop.cropId)"><mat-icon>delete</mat-icon></button>
+          <!-- <button mat-raised-button (click)="getFarmer(crop)" data-toggle="modal" data-target="#fdetails" >More-details</button> -->
+      </div>
+    </div>
+     <br>
+      <!-- <div id="fdetails"> {{currentFarmer.location}}</div> -->
+  </div>
+  
+  </div>
+  
+  </div>
+  </mat-tab>
+  
+  <mat-tab label="My Orders">
+    <div class="subscribedCrops">
+    <!-- another card -->
+    <div class="row" id="ads">
+        <!-- Category Card -->
+        <div *ngFor="let order of MyOrders" style="padding: 1.2rem;">
+            <div class="card p-3 bg-white shadow mb-5 rounded" style="width: 20rem;"><i class="fa fa-apple"></i>
+                <div class="text-center mt-2">
+                    <div>
+                        <div class="font-weight-bold mt-4"><span>Order details</span></div>
+                        <h4>crop : {{order.cropName}}</h4>
+                        <p>cropId: {{order.cropID}}</p>
+                    </div>
+                </div>
+                <div class="stats mt-2">
+                    <!-- <div class="d-flex justify-content-between p-price"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div> -->
+                    <div class="d-flex justify-content-between p-price"><span>Dealer Name:</span><span>{{order.dealerName}}</span></div>
+                    <div class="d-flex justify-content-between p-price"><span>Dealer contact</span><span>{{order.dealerMobile}}</span></div>
+                    <div class="d-flex justify-content-between p-price"><span>Deal Status</span><span>{{order.orderStatus}}</span></div>
+                    <!-- {{getFarmer(crop.farmerId)}} -->
+            
+                    <!-- <div id="fdetails"> {{currentFarmer.location}}</div> -->
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>OrderID: </span><span>{{order.orderID}}</span></div>
+                <button *ngIf="order.orderStatus=='Ordered'" class="btn btn-outline-success acceptButton" (click)="changeOrderStatus(order,'Accepted')">Accept Order</button>
+
+                <button *ngIf="order.orderStatus=='Ordered'" class="btn btn-outline-danger acceptButton" (click)="changeOrderStatus(order,'Declined')">Decline Order</button>
+            </div>
+    </div>
+  
+    </div>
+</div>
+  </mat-tab>
+  </mat-tab-group>
+<!-- crop form -->
+<div class="modal hide fade" id="addCropModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Admin Operation Form</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValueCrop">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">FarmerID</label>
+                        <input type="email" formControlName="farmerId" value="Farmer" class="form-control" id="exampleInputEmail1" value="Farmer" aria-describedby="emailHelp" placeholder="Enter farmerId" >
+                      </div>
+                    <label for="exampleInputEmail1">CropId</label>
+                    <input type="email" formControlName="cropId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropId">
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name of the Crop</label>
+                  <input type="email" formControlName="cropName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropName">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Crop Quantity in Kilogram</label>
+                    <input type="email" formControlName="cropQty" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropQty">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Crop Category (Fruit/Vegitable/Grain)</label>
+                    <input type="email" formControlName="cropType" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropType">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Price/Kg</label>
+                    <input type="email" formControlName="cropPrice" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropPrice">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Crop Description</label>
+                    <input type="email" formControlName="cropDesc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropPrice">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Image url</label>
+                    <input type="email" formControlName="cropImgUrl" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropPrice">
+                  </div>
+                <button type="submit" class="btn btn-primary" (click)="addCrop()" data-dismiss="modal">Add</button>
+                <button type="submit" class="btn btn-primary" (click)="updateCrop()" data-dismiss="modal">Update</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- user profile form card -->
+
+  <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">My Profile</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card p-4">
+            <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button> <span class="name mt-3">{{loggeduser.userName}}</span>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">Mobile No: {{loggeduser.mobileNo}}</span></div>
+                <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">EmailId: {{loggeduser.userEmail}}</span> </div>
+                <div><a href="" class="nav-link btn btn-outline-danger">Signout</a></div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
