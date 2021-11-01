@@ -288,13 +288,14 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="receipt" #receipt>
           <h3>Payment ID: {{payObj.paymentID}}</h3>
           <h3>Paid By: {{payObj.paymentFrom}} to {{payObj.paymentTo}} </h3>
           <h3>CropName: {{payObj.orderName}}</h3>
           <h3>AmountPaid: {{payObj.paymentAmount}}</h3>
         </div>
         <div class="modal-footer">
+          <button (click)="getPDF()">print receipt</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>

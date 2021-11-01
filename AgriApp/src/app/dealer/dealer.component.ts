@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import jsPDF from 'jspdf';
 import { cropModel } from '../models/cropModel';
 import { orderModel } from '../models/Orders';
 import { paymentModel } from '../models/paymentModel';
@@ -14,6 +15,7 @@ import { DealerServiceService } from '../Services/dealer-service.service';
 })
 export class DealerComponent implements OnInit {
 
+  @ViewChild('receipt') el!:ElementRef;
   constructor(private adminService:AdminServicesService,private dealerService: DealerServiceService,private fb:FormBuilder ) { }
   searchedKeyword!: string;
   flag: boolean=false;
@@ -144,8 +146,17 @@ addPayment(orderId:String,orderName:String,paymentTo:String,paymentFrom:String){
 
 }
 
+getPDF(){
 
+  let pdf = new jsPDF('p','pt','a4');
 
+  pdf.html(this.el.nativeElement,{
+    callback:(pdf)=>{
+      pdf.save("reciept.pdf");
+    }
+
+  })
+}
 
 changeOrderStatus(order:orderModel,status:String){
   this.order.orderID=order.orderID;

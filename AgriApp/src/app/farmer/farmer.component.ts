@@ -14,6 +14,7 @@ import { FarmerService } from '../Services/farmer.service';
 })
 export class FarmerComponent implements OnInit {
   
+  
   constructor(private myService:FarmerService, private adminService:AdminServicesService,private fb:FormBuilder,private dealerService: DealerServiceService ) { }
   loggeduser:userModel=new userModel("","","","","","","");
   myCropList:cropModel[]=[];

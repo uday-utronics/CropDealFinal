@@ -29,6 +29,7 @@
     "datatables.net": "^1.10.20",
     "datatables.net-dt": "^1.10.20",
     "jquery": "^3.4.1",
+    "jspdf": "^2.4.0",
     "ng2-search-filter": "^0.5.1",
     "ngx-toastr": "^14.1.4",
     "rxjs": "~6.6.0",
