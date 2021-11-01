@@ -1,0 +1,13 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: UserMicroService
+  data:
+    mongodb:
+      uri: mongodb+srv://utronics:test@utronics.i4evz.mongodb.net/UserDataBase?retryWrites=true&w=majority
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

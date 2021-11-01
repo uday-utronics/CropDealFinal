@@ -1,0 +1,21 @@
+server:
+   port: 8100
+      
+spring:
+  application:
+    name: ZuulGateway
+    
+zuul:
+   routes:
+      UserMicroService:
+         serviceId: UserMicroService
+      OrderMicroservice:
+         serviceId: OrderMicroservice
+      PaymentMicroservice:
+         serviceId: PaymentMicroservice
+#      login-service:
+#         url: http://localhost:9004
+      CROPMICROSERVICE:
+         serviceId: CROPMICROSERVICE
+      ADMINMICROSERVICE:
+         serviceId: ADMINMICROSERVICE
