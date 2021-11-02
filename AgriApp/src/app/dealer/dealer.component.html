@@ -30,12 +30,18 @@
 </nav> -->
 <nav class="navbar navbar-expand-sm ml-auto">
   <!-- <a class="navbar-brand" href="#">My Brand</a> -->
-  <div class="logo">
-      <img src="..\assets\logo1.png" width="30" height="30" class="d-inline-block align-top" alt="">
+  <div class="logo text-center">
+      <img src="..\assets\logo1.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp;
       Crop-Deal</div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-          <ul class="navbar-nav ml-auto">
+      <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="navbar justify-content-center" style="font-size:larger; font-weight: bold;">Dealer Page</div> -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <ul class="navbar-nav ml-auto text-center">
+            
             <li class="nav-item active">
       
               Welcome:{{loggeduser.userName}}&nbsp;&nbsp;
@@ -59,7 +65,14 @@
          
       
         </div>
+        
+  
       </nav>
+      <div>
+        <marquee width="100%" direction="right" height="25px" style="background-color: antiquewhite; font-weight: bold;">
+          Great Deals are waiting for you, grab them soon.
+          </marquee>
+        </div>
 
 
 
@@ -94,7 +107,7 @@
               <div class="d-flex justify-content-between p-price"><span>Crop quantity:</span><span>{{currentCrop.cropQty}}</span></div>
               <div class="d-flex justify-content-between p-price"><span>Crop Type:</span><span>{{currentCrop.cropType}}</span></div>
           </div>
-          <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Negotiable price:</span><span>₹ {{currentCrop.cropPrice}}</span></div>
+          <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Negotiable price:</span><span>₹ {{currentCrop.cropPrice}}/Kg</span></div>
           <button mat-raised-button (click)="placeOrder(currentFarmer.userId,currentCrop.cropId,currentFarmer.userName,currentFarmer.mobileNo,currentCrop.cropName)" data-toggle="modal" data-target="#cropDetailModal">Initiate-Deal &raquo;</button>
         </div>
       <p ></p>
@@ -120,13 +133,13 @@
         </div>
         <div class="stats mt-2">
             <!-- <div class="d-flex justify-content-between p-price"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div> -->
-            <div class="d-flex justify-content-between p-price"><span>Crop quantity:</span><span>{{crop.cropQty}}</span></div>
-            <div class="d-flex justify-content-between p-price"><span>Crop Type:</span><span>{{crop.cropType}}</span></div>
+            <div class="d-flex justify-content-between p-price font-weight-bold"><span>Crop quantity:</span><span>{{crop.cropQty}} Kg</span></div>
+            <div class="d-flex justify-content-between p-price font-weight-bold"><span>Crop Type:</span><span>{{crop.cropType}}</span></div>
             <!-- {{getFarmer(crop.farmerId)}} -->
     
             <!-- <div id="fdetails"> {{currentFarmer.location}}</div> -->
         </div>
-        <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div>
+        <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}/Kg</span></div>
         <button mat-raised-button (click)="getFarmer(crop)" data-toggle="modal" data-target="#fdetails" >More-details</button>
     </div>
    <br>
@@ -136,6 +149,7 @@
 </div>
 
 </div>
+
 </mat-tab>
 
 <mat-tab label="Interested Deals">
@@ -247,7 +261,7 @@
               <div class="col-12">
                 <div class="d-flex flex-column">
                     <p class="text mb-1">Amount</p>
-                    <input class="form-control mb-3" type="text" formControlName="paymentAmount" placeholder="Name" value="Enter Amount">
+                    <input class="form-control mb-3" type="text" formControlName="paymentAmount" placeholder="Enter Amount" value="Enter Amount">
                 </div>
             </div>
 

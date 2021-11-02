@@ -123,6 +123,7 @@ placeOrder(farmerId:String,cropId:String,farmerName:String,farmerMobile:String,c
   })
 
   this.getMyOrders();
+  this.ngOnInit();
 
 }
 
@@ -143,6 +144,7 @@ addPayment(orderId:String,orderName:String,paymentTo:String,paymentFrom:String){
   this.dealerService.makePayment(this.paymentObj).subscribe(res=>{alert("Payment Successfull.")});
   this.changeOrderStatus(this.order,"Completed");
   this.getMyOrders();
+  this.ngOnInit();
 
 }
 
@@ -173,6 +175,7 @@ changeOrderStatus(order:orderModel,status:String){
   this.dealerService.addOrder(this.order).subscribe();
 
   this.getMyOrders();
+  this.ngOnInit();
 }
 
 }

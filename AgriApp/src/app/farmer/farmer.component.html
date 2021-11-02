@@ -41,13 +41,13 @@
           </div>
           <div class="stats mt-2">
               <!-- <div class="d-flex justify-content-between p-price"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div> -->
-              <div class="d-flex justify-content-between p-price"><span>Crop quantity:</span><span>{{crop.cropQty}}</span></div>
-              <div class="d-flex justify-content-between p-price"><span>Crop Type:</span><span>{{crop.cropType}}</span></div>
+              <div class="d-flex justify-content-between p-price font-weight-bold"><span>Crop quantity:</span><span>{{crop.cropQty}} Kg</span></div>
+              <div class="d-flex justify-content-between p-price font-weight-bold"><span>Crop Type:</span><span>{{crop.cropType}}</span></div>
               <!-- {{getFarmer(crop.farmerId)}} -->
       
               <!-- <div id="fdetails"> {{currentFarmer.location}}</div> -->
           </div>
-          <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}</span></div>
+          <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Negotiable price:</span><span>₹ {{crop.cropPrice}}/Kg</span></div>
           <div style="justify-content: right;">
           <button mat-icon-button color="primary" (click)="editCrop(crop)" data-toggle="modal" data-target="#addCropModal"><mat-icon>edit</mat-icon></button>
           <button mat-icon-button color="warn" (click)="deleteCrop(crop.cropId)"><mat-icon>delete</mat-icon></button>
